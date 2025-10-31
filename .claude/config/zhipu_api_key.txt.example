@@ -1,0 +1,11 @@
+your_zhipu_api_key_here
+
+# How to get your Zhipu AI API key:
+# 1. Visit https://open.bigmodel.cn/
+# 2. Sign up or log in
+# 3. Go to API Keys section
+# 4. Create a new API key
+# 5. Copy the API key and paste it in zhipu_api_key.txt (remove .example extension)
+#
+# IMPORTANT: Keep your API key secure! Do not commit zhipu_api_key.txt to version control.
+# The .gitignore should include .claude/config/zhipu_api_key.txt
