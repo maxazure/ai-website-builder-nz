@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Student Services - Browns Bay Language School{% endblock %}
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Student Services</h1>
+    </div>
+</section>
+<section class="single-page-content">
+    <div class="container">
+        {{ page.content_html | safe }}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{
+  "output_dir": "templates/static/images",
+  "images": [
+    {
+      "filename": "banner-menu-page.jpg",
+      "prompt": "Overhead flat lay photograph of a beautiful brunch table at a beachfront cafe, featuring coffee cups with latte art, fresh breakfast plates with avocado toast, eggs benedict, pancakes, fresh fruit, orange juice glasses, and cutlery on rustic wooden table. Bright natural sunlight, ocean slightly blurred in background, vibrant colors, photorealistic.",
+      "priority": "medium"
+    },
+    {
+      "filename": "classic-kiwi-breakfast.jpg",
+      "prompt": "Professional food photography of a classic New Zealand breakfast plate on white ceramic dish: two perfectly fried eggs with golden yolks, crispy bacon strips, grilled sausage, golden hash browns, grilled tomato half, and thick-cut toasted sourdough bread. Garnished with fresh parsley. Natural window light, photorealistic.",
+      "priority": "high"
+    },
+    {
+      "filename": "smashed-avocado-toast.jpg",
+      "prompt": "Modern brunch photography of smashed avocado on toasted artisan sourdough bread, topped with a perfectly poached egg with runny yolk, crumbled feta cheese, cherry tomatoes, and microgreens. Flat lay on marble table, bright natural daylight, Instagram-worthy, photorealistic.",
+      "priority": "high"
+    },
+    {
+      "filename": "flat-white.jpg",
+      "prompt": "Perfect flat white coffee in white ceramic cup on matching saucer, featuring beautiful rosetta latte art on velvety microfoam surface. Shot from above on rustic wooden cafe table with soft natural morning light, photorealistic.",
+      "priority": "high"
+    },
+    {
+      "filename": "beachside-beef-burger.jpg",
+      "prompt": "Juicy gourmet beef burger on wooden board: thick grass-fed beef patty, melted cheddar cheese, crispy bacon, fresh lettuce, tomato slices, pickles, and special sauce in toasted brioche bun. Served with golden hand-cut fries. Side view, photorealistic.",
+      "priority": "high"
+    },
+    {
+      "filename": "gallery-cafe-interior.jpg",
+      "prompt": "Bright, modern cafe interior with wooden tables and chairs, large windows showing ocean view, pendant lights, plants, natural daylight flooding in. Welcoming, relaxed atmosphere, photorealistic.",
+      "priority": "medium"
+    },
+    {
+      "filename": "gallery-beach-sunset-view.jpg",
+      "prompt": "Beautiful sunset view from a beach: golden hour lighting with orange and pink sky, sun setting over the ocean horizon, calm water reflecting colors. Landscape photography, photorealistic.",
+      "priority": "high"
+    },
+    {
+      "filename": "article-behind-the-beans-featured.jpg",
+      "prompt": "Close-up of freshly roasted coffee beans in a heap with warm golden-brown colors. Some beans in focus in foreground, others softly blurred, showing texture and sheen.",
+      "priority": "medium"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} - Browns Bay Language School{% endblock %}
+{% block content %}
+<section class="post-detail">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/">Home</a> / <a href="/student-life">Student Life</a> / {{ post.title }}
+        </div>
+        <article class="post-content">
+            <h1>{{ post.title }}</h1>
+            <div class="post-meta">
+                <span>Published: {{ post.published_at.strftime('%B %d, %Y') if post.published_at else '' }}</span>
+                <span>By: {{ post.author }}</span>
+            </div>
+            <img src="{{ post.featured_image }}" alt="{{ post.title }}" class="post-featured-image">
+            <div class="post-body">
+                {{ post.content_html | safe }}
+            </div>
+        </article>
+    </div>
+</section>
+{% endblock %}

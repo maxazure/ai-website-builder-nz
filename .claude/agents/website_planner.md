@@ -36,7 +36,7 @@ The DM will provide:
 
 **2.1 Read the Industry Research Report**
 
-File path: `D:/projects/docmsnz/新西兰中小企业网站模板研究报告.md`
+File path: `新西兰中小企业网站模板研究报告.md`
 
 Find the relevant section for the user's industry:
 - Read the entire report to understand all 300+ industries

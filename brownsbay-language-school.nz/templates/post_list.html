@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Student Life & News - Browns Bay Language School{% endblock %}
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Student Life & News</h1>
+        <p>Stories, tips, and updates from Browns Bay Language School</p>
+    </div>
+</section>
+<section class="post-list-section">
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-3 sidebar">
+                <h3>Categories</h3>
+                <ul class="category-list">
+                    <li><a href="/student-life" class="{% if not current_category_id %}active{% endif %}">All Articles</a></li>
+                    {% for category in categories %}
+                    <li><a href="/student-life?category={{ category.id }}" class="{% if current_category_id == category.id %}active{% endif %}">{{ category.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </aside>
+            <div class="col-md-9">
+                <div class="post-grid">
+                    {% for post in posts %}
+                    <div class="post-card">
+                        <img src="{{ post.featured_image }}" alt="{{ post.title }}" loading="lazy">
+                        <div class="card-content">
+                            <h3>{{ post.title }}</h3>
+                            <p class="post-meta">{{ post.published_at.strftime('%B %d, %Y') if post.published_at else '' }}</p>
+                            <p>{{ post.summary[:150] }}...</p>
+                            <a href="/student-life/detail/{{ post.slug }}">Read More →</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

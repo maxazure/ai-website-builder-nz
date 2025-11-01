@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Browns Bay Language School - Learn English in Auckland, NZ{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Quality English language education in beautiful Browns Bay, Auckland. General English, PTE, IELTS courses for international students.{% endblock %}">
+    <link rel="stylesheet" href="/static/css/main.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/">
+                        <h1 class="logo-text">Browns Bay Language School</h1>
+                        <p class="logo-subtitle">Quality English Education</p>
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="main-nav" id="main-nav">
+                    <ul>
+                        {% for column in navigation %}
+                        {% if column.is_enabled and column.show_in_nav %}
+                        <li class="{% if current_column == column.slug %}active{% endif %}">
+                            <a href="/{{ column.slug if column.slug != 'home' else '' }}">{{ column.name }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>{{ site_settings.site_name }}</h3>
+                    <p>Quality English language education in beautiful Browns Bay, Auckland since 2005.</p>
+                    <p class="accreditation">{{ site_settings.accreditations }}</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/courses">Our Courses</a></li>
+                        <li><a href="/student-life">Student Life</a></li>
+                        <li><a href="/services">Student Services</a></li>
+                        <li><a href="/admissions">Apply Now</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><strong>Phone:</strong> {{ site_settings.phone }}</p>
+                    <p><strong>WhatsApp:</strong> {{ site_settings.whatsapp_number }}</p>
+                    <p><strong>Email:</strong> {{ site_settings.email }}</p>
+                    <p><strong>Address:</strong> {{ site_settings.address }}</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="{{ site_settings.facebook_url }}" target="_blank" rel="noopener">Facebook</a>
+                        <a href="{{ site_settings.instagram_url }}" target="_blank" rel="noopener">Instagram</a>
+                        <a href="{{ site_settings.youtube_url }}" target="_blank" rel="noopener">YouTube</a>
+                        <a href="{{ site_settings.linkedin_url }}" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>{{ site_settings.copyright }}</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

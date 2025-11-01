@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}English Courses - Browns Bay Language School Auckland{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Our English Courses</h1>
+        <p>Choose the perfect course to achieve your English language goals</p>
+    </div>
+</section>
+
+<section class="product-list-section">
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-3 sidebar">
+                <h3>Course Categories</h3>
+                <ul class="category-list">
+                    <li><a href="/courses" class="{% if not current_category_id %}active{% endif %}">All Courses</a></li>
+                    {% for category in categories %}
+                    <li><a href="/courses?category={{ category.id }}" class="{% if current_category_id == category.id %}active{% endif %}">{{ category.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </aside>
+            
+            <div class="col-md-9">
+                <div class="product-grid">
+                    {% for product in products %}
+                    <div class="product-card">
+                        <img src="{{ product.featured_image }}" alt="{{ product.name }}" loading="lazy">
+                        {% if product.is_recommended %}
+                        <span class="badge badge-recommended">Popular</span>
+                        {% endif %}
+                        <div class="card-content">
+                            <h3>{{ product.name }}</h3>
+                            <p>{{ product.summary[:150] }}...</p>
+                            <div class="product-price">
+                                <strong>{{ product.price_text }}</strong>
+                            </div>
+                            <a href="/courses/detail/{{ product.slug }}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

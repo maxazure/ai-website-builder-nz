@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+
+{% block title %}Browns Bay Language School - Learn English in Beautiful Auckland, NZ{% endblock %}
+
+{% block content %}
+<section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/static/images/hero-homepage-browns-bay-beach.jpg');">
+    <div class="hero-overlay">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Learn English by the Beach</h1>
+                <p class="hero-subtitle">Quality English education in beautiful Browns Bay, Auckland</p>
+                <div class="hero-buttons">
+                    <a href="/courses" class="btn btn-primary">View Courses</a>
+                    <a href="/contact" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="trust-stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Successful Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">25</div>
+                <div class="stat-label">Nationalities</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-summary">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Welcome to Browns Bay Language School</h2>
+                <p>Since 2005, we've been providing exceptional English language training to students from around the world. Located in beautiful beachside Browns Bay, just 20 minutes from central Auckland, we combine academic excellence with a relaxed coastal lifestyle.</p>
+
+                <div class="certifications">
+                    <h3>Officially Recognized</h3>
+                    <div class="cert-badges">
+                        <img src="/static/images/badge-nzqa-category-1.jpg" alt="NZQA Category 1 Provider" class="cert-badge" loading="lazy">
+                        <img src="/static/images/badge-english-new-zealand.jpg" alt="English New Zealand Member" class="cert-badge" loading="lazy">
+                    </div>
+                    <p class="cert-text"><strong>NZQA Category 1</strong> - Highest education quality rating in New Zealand<br>
+                    <strong>English New Zealand Member</strong> - National quality assurance</p>
+                </div>
+
+                <a href="/about" class="btn btn-secondary">Learn More About Us →</a>
+            </div>
+            <div class="col-md-6">
+                <img src="/static/images/facility-reception-welcome.jpg" alt="School Reception" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="featured-courses">
+    <div class="container">
+        <h2>Our Popular Courses</h2>
+        <div class="course-grid">
+            {% for course in featured_products %}
+            <div class="course-card">
+                <img src="{{ course.featured_image }}" alt="{{ course.name }}" loading="lazy">
+                {% if course.is_recommended %}
+                <span class="badge badge-recommended">Popular</span>
+                {% endif %}
+                <div class="card-content">
+                    <h3>{{ course.name }}</h3>
+                    <p>{{ course.summary[:120] }}...</p>
+                    <div class="course-price">
+                        <strong>{{ course.price_text }}</strong>
+                    </div>
+                    <a href="/courses/detail/{{ course.slug }}" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="/courses" class="btn btn-accent">View All Courses</a>
+        </div>
+    </div>
+</section>
+
+<section class="latest-news">
+    <div class="container">
+        <h2>Latest News & Student Life</h2>
+        <div class="post-grid">
+            {% for post in featured_posts %}
+            <div class="post-card">
+                <img src="{{ post.featured_image }}" alt="{{ post.title }}" loading="lazy">
+                <div class="card-content">
+                    <h3>{{ post.title }}</h3>
+                    <p class="post-meta">{{ post.published_at.strftime('%B %d, %Y') if post.published_at else '' }}</p>
+                    <p>{{ post.summary[:120] }}...</p>
+                    <a href="/student-life/detail/{{ post.slug }}">Read More →</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="testimonials">
+    <div class="container">
+        <h2>What Our Students Say</h2>
+        <p class="section-subtitle">Real success stories from international students</p>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-image">
+                    <img src="/static/images/testimonial-student-1-asian-female.jpg" alt="Student testimonial" loading="lazy">
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        <p>"Browns Bay Language School helped me achieve my dream! I improved from IELTS 5.5 to 7.5 in just 16 weeks. The small classes and personal attention from teachers made all the difference. Now I'm studying nursing at Auckland University!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Yuki Tanaka</strong>
+                        <span>Japan → Auckland University</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-image">
+                    <img src="/static/images/testimonial-student-2-latino-male.jpg" alt="Student testimonial" loading="lazy">
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        <p>"I came from Brazil with basic English and was nervous. The teachers at Browns Bay were so patient and supportive. After 6 months, I can confidently work in a New Zealand company. The beachside location made studying feel like a holiday!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Carlos Silva</strong>
+                        <span>Brazil → Working in NZ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-image">
+                    <img src="/static/images/testimonial-student-3-middle-eastern-female.jpg" alt="Student testimonial" loading="lazy">
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        <p>"The best decision I ever made! The school found me a wonderful homestay family who helped me practice English every day. My PTE score went from 45 to 72. The Student Services team helped with everything - visa, accommodation, even job hunting!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Fatima Al-Mansouri</strong>
+                        <span>Saudi Arabia → PTE Success</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-image">
+                    <img src="/static/images/testimonial-student-4-east-asian-male.jpg" alt="Student testimonial" loading="lazy">
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        <p>"Browns Bay is like a second home to me. The teachers know every student by name and genuinely care about your progress. I made friends from 15 different countries! The Friday beach activities and weekend trips made my English learning journey unforgettable."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Kim Min-jun</strong>
+                        <span>South Korea → General English</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="why-choose-us">
+    <div class="container">
+        <h2>Why Choose Browns Bay Language School?</h2>
+        <div class="reasons-grid">
+            <div class="reason-item">
+                <div class="reason-icon">🎓</div>
+                <h3>Small Class Sizes</h3>
+                <p>Maximum 12 students per class (average 8) for personalized attention and more speaking practice</p>
+            </div>
+            <div class="reason-item">
+                <div class="reason-icon">🏖️</div>
+                <h3>Beautiful Location</h3>
+                <p>Study by the beach in safe, friendly Browns Bay - authentic Kiwi lifestyle 30 minutes from Auckland CBD</p>
+            </div>
+            <div class="reason-item">
+                <div class="reason-icon">👨‍🏫</div>
+                <h3>Experienced Teachers</h3>
+                <p>Qualified, passionate teachers with years of experience teaching international students</p>
+            </div>
+            <div class="reason-item">
+                <div class="reason-icon">🏠</div>
+                <h3>Comprehensive Support</h3>
+                <p>Visa assistance, accommodation placement, airport pickup, 24/7 emergency contact, and ongoing pastoral care</p>
+            </div>
+            <div class="reason-item">
+                <div class="reason-icon">✅</div>
+                <h3>Proven Results</h3>
+                <p>95% student success rate - IELTS/PTE goals achieved, university placements secured, careers advanced</p>
+            </div>
+            <div class="reason-item">
+                <div class="reason-icon">🌍</div>
+                <h3>International Community</h3>
+                <p>Students from 25+ countries - perfect English immersion environment with global friendships</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <h2>Ready to Start Your English Journey?</h2>
+        <p>Contact us today for a free consultation and school tour</p>
+        <a href="/contact" class="btn btn-primary btn-large">Get Started Now</a>
+    </div>
+</section>
+{% endblock %}

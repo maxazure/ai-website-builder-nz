@@ -1,0 +1,15 @@
+available_themes:
+- default
+base_dir: .
+cache_ttl: 300
+database_url: sqlite:///./instance/database.db
+enable_cache: true
+log_level: INFO
+media_dir: ./instance/media
+site_description: Premier English language school in Browns Bay, Auckland, offering
+  General English and PTE exam preparation courses for international students
+site_name: Browns Bay Language School
+site_url: http://localhost:8000
+static_dir: ./templates/static
+template_dir: ./templates
+theme: default

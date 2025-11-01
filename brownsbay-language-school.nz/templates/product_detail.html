@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }} - Browns Bay Language School{% endblock %}
+{% block content %}
+<section class="product-detail">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/">Home</a> / <a href="/courses">Courses</a> / {{ product.name }}
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <img src="{{ product.featured_image }}" alt="{{ product.name }}" class="product-main-image">
+                <h1>{{ product.name }}</h1>
+                <div class="product-description">
+                    {{ product.description_html | safe }}
+                </div>
+            </div>
+            <div class="col-md-4 sidebar">
+                <div class="product-info-box">
+                    <h3>Course Information</h3>
+                    <div class="info-item">
+                        <strong>Price:</strong> {{ product.price_text }}
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="/contact" class="btn btn-primary btn-block">Enquire Now</a>
+                        <a href="/admissions" class="btn btn-secondary btn-block">Apply</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

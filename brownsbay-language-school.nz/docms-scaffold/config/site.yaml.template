@@ -1,0 +1,14 @@
+available_themes:
+- default
+base_dir: .
+cache_ttl: 300
+database_url: sqlite:///./instance/{{DATABASE_NAME}}
+enable_cache: true
+log_level: INFO
+media_dir: ./instance/media
+site_description: {{SITE_DESCRIPTION}}
+site_name: {{SITE_NAME}}
+site_url: {{SITE_URL}}
+static_dir: ./templates/static
+template_dir: ./templates
+theme: default
