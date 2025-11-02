@@ -1,0 +1,453 @@
+# Docms 模块配置文件
+# 定义所有可用模块及其依赖关系
+
+# 模块分类
+module_categories:
+  core: "核心模块（必需）"
+  basic_content: "基础内容模块"
+  interaction: "交互功能模块"
+  ecommerce: "电商交易模块"
+  booking_service: "预约与服务模块"
+  multimedia: "多媒体与资源模块"
+
+# 核心模块（必需，不可禁用）
+core_modules:
+  - name: "base"
+    display_name: "基础模块"
+    description: "基础模型、数据库配置等核心功能"
+    required: true
+    files:
+      models:
+        - "base.py"
+      services: []
+      schemas: []
+
+  - name: "media"
+    display_name: "媒体文件"
+    description: "图片、文件等媒体资源管理"
+    required: true
+    files:
+      models:
+        - "media.py"
+      services: []
+      schemas: []
+
+  - name: "site"
+    display_name: "站点设置"
+    description: "站点栏目、设置、单页面"
+    required: true
+    files:
+      models:
+        - "site.py"
+      services:
+        - "site_service.py"
+      schemas: []
+
+  - name: "contact"
+    display_name: "联系表单"
+    description: "基础联系表单功能"
+    required: true
+    files:
+      models:
+        - "contact.py"
+      services: []
+      schemas:
+        - "requests.py"
+
+# 可选模块
+optional_modules:
+  # ==================== 基础内容模块 ====================
+  - name: "post"
+    display_name: "新闻/博客"
+    description: "文章、新闻、博客内容管理"
+    category: "basic_content"
+    dependencies: ["media"]
+    files:
+      models:
+        - "post.py"
+      services:
+        - "post_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "PostCreate"
+            - "PostUpdate"
+            - "PostResponse"
+            - "PostCategoryCreate"
+            - "PostCategoryResponse"
+
+  - name: "team"
+    display_name: "团队展示"
+    description: "团队成员、管理层、专家展示"
+    category: "basic_content"
+    dependencies: ["media"]
+    files:
+      models:
+        - "team.py"
+      services:
+        - "team_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "TeamMemberCreate"
+            - "TeamMemberUpdate"
+            - "TeamMemberResponse"
+
+  - name: "portfolio"
+    display_name: "案例展示"
+    description: "项目案例、作品集展示"
+    category: "basic_content"
+    dependencies: ["media"]
+    files:
+      models:
+        - "portfolio.py"
+      services:
+        - "portfolio_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "PortfolioCreate"
+            - "PortfolioUpdate"
+            - "PortfolioResponse"
+
+  - name: "product"
+    display_name: "产品/服务"
+    description: "产品或服务展示与管理"
+    category: "basic_content"
+    dependencies: ["media", "custom_field"]
+    files:
+      models:
+        - "product.py"
+      services:
+        - "product_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "ProductCreate"
+            - "ProductUpdate"
+            - "ProductResponse"
+
+  - name: "custom_field"
+    display_name: "自定义字段"
+    description: "产品自定义字段支持"
+    category: "basic_content"
+    dependencies: []
+    files:
+      models:
+        - "custom_field.py"
+      services: []
+      schemas: []
+
+  - name: "faq"
+    display_name: "常见问题"
+    description: "FAQ常见问题与答案"
+    category: "basic_content"
+    dependencies: []
+    files:
+      models:
+        - "faq.py"
+      services:
+        - "faq_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "FAQCreate"
+            - "FAQUpdate"
+            - "FAQResponse"
+
+  # ==================== 交互功能模块 ====================
+  - name: "comment"
+    display_name: "评论/评价"
+    description: "评论和评价系统"
+    category: "interaction"
+    dependencies: []  # user 是可选依赖
+    files:
+      models:
+        - "comment.py"
+      services:
+        - "comment_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "CommentCreate"
+            - "CommentUpdate"
+            - "CommentResponse"
+            - "ReviewCreate"
+            - "ReviewUpdate"
+            - "ReviewResponse"
+
+  - name: "user"
+    display_name: "用户/会员"
+    description: "用户注册、登录、会员系统"
+    category: "interaction"
+    dependencies: []
+    files:
+      models:
+        - "user.py"
+      services:
+        - "user_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "UserRegister"
+            - "UserLogin"
+            - "UserUpdate"
+            - "UserResponse"
+
+  - name: "newsletter"
+    display_name: "通讯订阅"
+    description: "邮件订阅与营销活动"
+    category: "interaction"
+    dependencies: []
+    files:
+      models:
+        - "newsletter.py"
+      services:
+        - "newsletter_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "NewsletterSubscribeRequest"
+            - "NewsletterSubscriberResponse"
+
+  # ==================== 电商交易模块 ====================
+  - name: "cart"
+    display_name: "购物车"
+    description: "购物车管理"
+    category: "ecommerce"
+    dependencies: ["product", "user"]
+    files:
+      models:
+        - "cart.py"
+      services:
+        - "cart_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "CartItemAdd"
+            - "CartItemResponse"
+            - "CartResponse"
+
+  - name: "order"
+    display_name: "订单管理"
+    description: "电商订单管理"
+    category: "ecommerce"
+    dependencies: ["product", "user", "cart"]
+    files:
+      models:
+        - "order.py"
+      services:
+        - "order_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "OrderItemCreate"
+            - "OrderCreate"
+            - "OrderUpdate"
+            - "OrderResponse"
+
+  # ==================== 预约与服务模块 ====================
+  - name: "booking"
+    display_name: "在线预约"
+    description: "服务预约管理系统"
+    category: "booking_service"
+    dependencies: ["team"]  # user 是可选依赖
+    files:
+      models:
+        - "booking.py"
+      services:
+        - "booking_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "BookingCreate"
+            - "BookingUpdate"
+            - "BookingResponse"
+
+  - name: "restaurant"
+    display_name: "餐厅订餐"
+    description: "餐厅菜单与订单管理"
+    category: "booking_service"
+    dependencies: ["media"]  # user 是可选依赖
+    files:
+      models:
+        - "restaurant.py"
+      services:
+        - "restaurant_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "MenuItemCreate"
+            - "RestaurantOrderItemCreate"
+            - "RestaurantOrderCreate"
+            - "RestaurantOrderResponse"
+
+  - name: "event"
+    display_name: "活动报名"
+    description: "活动发布与报名管理"
+    category: "booking_service"
+    dependencies: ["media"]  # user 是可选依赖
+    files:
+      models:
+        - "event.py"
+      services:
+        - "event_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "EventCreate"
+            - "EventRegistrationCreate"
+            - "EventResponse"
+
+  # ==================== 多媒体与资源模块 ====================
+  - name: "gallery"
+    display_name: "图片画廊"
+    description: "图片集合与相册管理"
+    category: "multimedia"
+    dependencies: ["media"]
+    files:
+      models:
+        - "gallery.py"
+      services:
+        - "gallery_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "GalleryCreate"
+            - "GalleryImageCreate"
+            - "GalleryResponse"
+
+  - name: "video"
+    display_name: "视频展示"
+    description: "视频内容管理与播放"
+    category: "multimedia"
+    dependencies: ["media"]
+    files:
+      models:
+        - "video.py"
+      services:
+        - "video_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "VideoCreate"
+            - "VideoUpdate"
+            - "VideoResponse"
+
+  - name: "file_download"
+    display_name: "文件下载"
+    description: "文档与资源下载管理"
+    category: "multimedia"
+    dependencies: ["media"]  # user 是可选依赖
+    files:
+      models:
+        - "file_download.py"
+      services:
+        - "file_download_service.py"
+      schemas:
+        - key: "schemas.py"
+          exports:
+            - "FileDownloadCreate"
+            - "FileDownloadUpdate"
+            - "FileDownloadResponse"
+
+# 预设方案（常见行业配置）
+presets:
+  - name: "corporate"
+    display_name: "企业官网"
+    description: "标准企业官网配置"
+    modules:
+      - "post"
+      - "team"
+      - "portfolio"
+      - "product"
+      - "faq"
+      - "gallery"
+
+  - name: "ecommerce"
+    display_name: "电商网站"
+    description: "完整电商解决方案"
+    modules:
+      - "product"
+      - "custom_field"
+      - "user"
+      - "cart"
+      - "order"
+      - "comment"
+      - "newsletter"
+      - "gallery"
+
+  - name: "education"
+    display_name: "教育培训"
+    description: "教育机构网站"
+    modules:
+      - "post"
+      - "team"
+      - "product"  # 课程
+      - "faq"
+      - "user"
+      - "booking"
+      - "event"
+      - "video"
+      - "file_download"
+
+  - name: "restaurant"
+    display_name: "餐厅/咖啡馆"
+    description: "餐饮行业网站"
+    modules:
+      - "restaurant"
+      - "booking"  # 订座
+      - "gallery"
+      - "comment"
+      - "newsletter"
+
+  - name: "medical"
+    display_name: "医疗/诊所"
+    description: "医疗健康服务"
+    modules:
+      - "post"
+      - "team"
+      - "product"  # 服务
+      - "faq"
+      - "booking"
+      - "video"
+      - "file_download"
+
+  - name: "service"
+    display_name: "专业服务"
+    description: "律师、会计、咨询等专业服务"
+    modules:
+      - "post"
+      - "team"
+      - "portfolio"
+      - "product"
+      - "faq"
+      - "booking"
+      - "file_download"
+
+  - name: "minimal"
+    display_name: "最小化配置"
+    description: "仅包含核心功能"
+    modules: []  # 只有核心模块
+
+  - name: "full"
+    display_name: "完整配置"
+    description: "包含所有模块"
+    modules:
+      - "post"
+      - "team"
+      - "portfolio"
+      - "product"
+      - "custom_field"
+      - "faq"
+      - "comment"
+      - "user"
+      - "newsletter"
+      - "cart"
+      - "order"
+      - "booking"
+      - "restaurant"
+      - "event"
+      - "gallery"
+      - "video"
+      - "file_download"
