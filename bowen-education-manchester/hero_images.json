@@ -1,0 +1,25 @@
+{
+  "output_dir": "/home/maxazure/projects/ai-website-builder-nz/bowen-education-manchester/templates/static/images",
+  "images": [
+    {
+      "filename": "hero-main-brand.jpg",
+      "prompt": "A warm and professional Chinese language classroom in Manchester, UK. Young students aged 8-12 sitting at desks, learning Chinese characters with enthusiasm. A friendly Chinese teacher writing on a whiteboard. Bright, modern classroom with colorful educational posters showing Chinese calligraphy and culture. Natural lighting, educational atmosphere, diversity in students. Professional photography style, 16:9 aspect ratio, high quality, detailed.",
+      "priority": "high"
+    },
+    {
+      "filename": "hero-haf-programme.jpg",
+      "prompt": "Children aged 6-12 participating in fun holiday activities at a community center in Manchester. Diverse group of kids doing Chinese paper cutting craft, playing badminton, and enjoying healthy meals together. Bright, cheerful atmosphere with Trafford Council HAF programme banners visible. Happy, energetic children, supervised by friendly staff. Community engagement feeling. Professional photography style, 16:9 aspect ratio, high quality, vibrant colors.",
+      "priority": "high"
+    },
+    {
+      "filename": "hero-henan-university.jpg",
+      "prompt": "British-Chinese students on an educational tour in China, standing in front of Henan University's traditional Chinese architecture gate. Students aged 14-18 wearing casual travel clothes, taking group photos, holding British and Chinese flags. Beautiful ancient Chinese architecture background, cherry blossoms, spring scenery. Cultural exchange atmosphere, students smiling and excited. Professional photography style, 16:9 aspect ratio, high quality, warm tones.",
+      "priority": "high"
+    },
+    {
+      "filename": "hero-event-placeholder.jpg",
+      "prompt": "A vibrant Chinese New Year celebration event in Manchester community center. Colorful red lanterns, Chinese decorations, children and families participating in lion dance performance. Traditional Chinese festive atmosphere, red and gold colors dominant. Community gathering, multicultural celebration. Professional event photography style, 16:9 aspect ratio, high quality, festive and joyful mood.",
+      "priority": "high"
+    }
+  ]
+}

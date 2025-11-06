@@ -98,9 +98,23 @@ class ModuleManager:
             for file_type in ["models", "services", "schemas"]:
                 files[file_type].extend(module_files.get(file_type, []))
 
-        # 去重
+        # 去重（处理字符串和字典混合的情况）
         for file_type in files:
-            files[file_type] = list(set(files[file_type]))
+            seen = []
+            unique_files = []
+            for item in files[file_type]:
+                # 处理字典对象（如 schemas 中带 exports 的配置）
+                if isinstance(item, dict):
+                    item_key = item.get("key", str(item))
+                    if item_key not in seen:
+                        seen.append(item_key)
+                        unique_files.append(item)
+                # 处理字符串
+                else:
+                    if item not in seen:
+                        seen.append(item)
+                        unique_files.append(item)
+            files[file_type] = unique_files
 
         return files
 

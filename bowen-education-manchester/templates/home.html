@@ -1,0 +1,916 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Bowen Education Group | Manchester Chinese School{% endblock %}
+
+{% block meta_description %}Bowen Education Group - Premier Chinese language school in Manchester offering Foundation to A-Level Mandarin courses, chess club, badminton club, and government-funded community programmes.{% endblock %}
+
+{% block meta_keywords %}Chinese school Manchester, Mandarin classes, GCSE Chinese, A-Level Chinese, HAF programme, Chess club, Badminton club{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+/* Hero Carousel Styles */
+.hero-carousel {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide {
+    position: relative;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);  /* Increased opacity for better text contrast */
+    z-index: 1;
+}
+
+.hero-slide-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 800px;
+}
+
+.hero-slide-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);  /* Strong text shadow for readability */
+}
+
+.hero-slide-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);  /* Text shadow for subtitle */
+}
+
+.hero-slide-desc {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);  /* Text shadow for description */
+}
+
+.hero-badge {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    z-index: 3;
+}
+
+.hero-badge img {
+    height: 40px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: white;
+}
+
+.swiper-pagination-bullet {
+    background: white;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+/* Service Blocks */
+.service-blocks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.service-block {
+    position: relative;
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.service-block-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.service-block:hover .service-block-bg {
+    transform: scale(1.1);
+}
+
+.service-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+    z-index: 1;
+}
+
+.service-block-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+}
+
+.service-block-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.service-block-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.service-block-desc {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.service-block-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.service-tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+}
+
+.service-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #22c55e;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    z-index: 3;
+}
+
+/* News Cards */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.news-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.news-card-image {
+    position: relative;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.news-card-category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: #1e3a8a;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+}
+
+.news-card-content {
+    padding: 1.5rem;
+}
+
+.news-card-date {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.news-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-card-excerpt {
+    color: #6b7280;
+    font-size: 0.9375rem;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Partner Logo Band */
+.partner-logos {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.partner-logo {
+    flex-shrink: 0;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    height: 60px;
+    width: auto;
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Stats Section */
+.stats-section {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    padding: 4rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Contact Section */
+.contact-map-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .service-blocks {
+        grid-template-columns: 1fr;
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-map-section {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-slide-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-carousel {
+        height: 70vh;
+    }
+
+    .hero-slide {
+        height: 70vh;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-slide-title {
+        font-size: 2rem;
+    }
+
+    .hero-slide-subtitle {
+        font-size: 1.25rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Carousel Section -->
+<section class="hero-carousel">
+    <div class="swiper heroSwiper">
+        <div class="swiper-wrapper">
+            <!-- Slide 1: Main Brand -->
+            <div class="swiper-slide">
+                <div class="hero-slide" style="background-image: url('/static/images/heroes/hero-main-brand.jpg');">
+                    <div class="container">
+                        <div class="hero-slide-content" data-aos="fade-up">
+                            <h1 class="hero-slide-title">
+                                Bowen Education Group<br>
+                                <span style="font-size: 2.5rem;">博文集团</span>
+                            </h1>
+                            <p class="hero-slide-subtitle">Bridging East and West Through Education</p>
+                            <p class="hero-slide-subtitle" style="font-size: 1.25rem;">中西融汇，博学致远</p>
+                            <div class="mt-4">
+                                <a href="/school/" class="btn btn-primary btn-lg me-3">探索课程 Explore Courses</a>
+                                <a href="/contact/" class="btn btn-outline-light btn-lg">预约试听 Book Trial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: HAF Programme -->
+            <div class="swiper-slide">
+                <div class="hero-slide" style="background-image: url('/static/images/heroes/hero-haf-programme.jpg');">
+                    <div class="hero-badge">
+                        <span style="font-weight: 700; color: #1e3a8a;">Trafford Council</span>
+                    </div>
+                    <div class="container">
+                        <div class="hero-slide-content" data-aos="fade-up">
+                            <h1 class="hero-slide-title">Official HAF Programme Provider</h1>
+                            <p class="hero-slide-subtitle">政府认证HAF项目提供商</p>
+                            <p class="hero-slide-desc">
+                                Funded by Trafford Council - Free Holiday Activities & Healthy Food for Eligible Children
+                            </p>
+                            <div class="mt-4">
+                                <a href="/programmes/programmes-haf/" class="btn btn-success btn-lg">了解HAF项目 Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Henan University Partnership -->
+            <div class="swiper-slide">
+                <div class="hero-slide" style="background-image: url('/static/images/heroes/hero-henan-university.svg');">
+                    <div class="hero-badge">
+                        <span style="font-weight: 700; color: #dc2626;">河南大学</span>
+                    </div>
+                    <div class="container">
+                        <div class="hero-slide-content" data-aos="fade-up">
+                            <h1 class="hero-slide-title">Strategic Partnership with Henan University</h1>
+                            <p class="hero-slide-subtitle">河南大学战略合作伙伴</p>
+                            <p class="hero-slide-desc">
+                                Cultural Exchange Programmes & Root-seeking Tours to China
+                            </p>
+                            <div class="mt-4">
+                                <a href="/events/events-henan/" class="btn btn-warning btn-lg">查看合作详情 View Partnership</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Featured Event (Dynamic) -->
+            {% if featured_event %}
+            <div class="swiper-slide">
+                <div class="hero-slide" style="background-image: url('{{ featured_event.featured_image if featured_event.cover_media else '/static/images/heroes/hero-event-featured.jpg' }}');">
+                    <div class="container">
+                        <div class="hero-slide-content" data-aos="fade-up">
+                            <h1 class="hero-slide-title">{{ featured_event.title }}</h1>
+                            <p class="hero-slide-desc">{{ featured_event.summary }}</p>
+                            <div class="mt-4">
+                                <a href="/news/{{ featured_event.slug }}/" class="btn btn-primary btn-lg">查看详情 Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<!-- Introduction Section -->
+<section class="section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="mb-4">
+                    <span class="badge bg-primary mb-3">About Us / 关于我们</span>
+                    <h2 class="display-5 fw-bold mb-3">Leading Chinese Education in Manchester</h2>
+                    <h3 class="h4 text-muted mb-4">曼彻斯特领先的中文教育机构</h3>
+                </div>
+
+                <p class="lead mb-3">
+                    Bowen Education Group is a registered educational institution in Manchester, UK,
+                    offering comprehensive Chinese language programmes from Foundation to A-Level,
+                    academic tutoring, chess club, badminton club, and government-funded community programmes.
+                </p>
+
+                <p class="lead mb-4">
+                    博文集团是位于曼彻斯特的注册教育机构，提供从基础到A-Level的全方位中文课程、
+                    学科辅导、国际象棋俱乐部、羽毛球俱乐部以及政府资助的社区项目。
+                </p>
+
+                <div class="row text-center mb-4">
+                    <div class="col-4">
+                        <div class="p-3">
+                            <div class="h1 fw-bold text-primary">{{ site.established_year or '2018' }}</div>
+                            <div class="small text-muted">成立年份<br>Established</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="p-3">
+                            <div class="h1 fw-bold text-primary">{{ site.student_count or '500+' }}</div>
+                            <div class="small text-muted">在读学生<br>Students</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="p-3">
+                            <div class="h1 fw-bold text-primary">{{ site.gcse_pass_rate or '100%' }}</div>
+                            <div class="small text-muted">GCSE通过率<br>Pass Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/about/" class="btn btn-outline-primary btn-lg">了解更多 Learn More →</a>
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="position-relative">
+                    <img src="/static/images/intro-chinese-new-year.jpg"
+                         alt="Bowen Education Group - Chinese New Year Celebration"
+                         class="img-fluid rounded shadow-lg"
+                         loading="lazy">
+                    <div class="position-absolute top-0 end-0 m-3 bg-white px-3 py-2 rounded shadow">
+                        <small class="fw-bold text-primary">Registered Education Provider</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Four Service Blocks -->
+<section class="section bg-light py-5">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="badge bg-primary mb-3">Our Services / 服务项目</span>
+            <h2 class="display-5 fw-bold mb-3">Comprehensive Education Solutions</h2>
+            <p class="lead text-muted">为不同年龄和需求提供多元化教育服务</p>
+        </div>
+
+        <div class="service-blocks">
+            <!-- Block 1: Chinese School -->
+            <a href="/school/" class="text-decoration-none" data-aos="fade-up" data-aos-delay="0">
+                <div class="service-block">
+                    <div class="service-block-bg" style="background-image: url('/static/images/services/service-chinese-school.jpg');"></div>
+                    <div class="service-block-content">
+                        <div class="service-block-icon">📚</div>
+                        <h3 class="service-block-title">Chinese School<br><span style="font-size: 1.25rem;">中文学校</span></h3>
+                        <p class="service-block-desc">From Foundation to A-Level Mandarin, HSK, YCT preparation</p>
+                        <div class="service-block-tags">
+                            <span class="service-tag">GCSE Chinese</span>
+                            <span class="service-tag">A-Level Mandarin</span>
+                            <span class="service-tag">HSK Certification</span>
+                        </div>
+                        <div class="text-end">
+                            <span class="btn btn-light btn-sm">查看课程 View Courses →</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Block 2: Chess Club -->
+            <a href="/chess/" class="text-decoration-none" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-block">
+                    <div class="service-block-bg" style="background-image: url('/static/images/services/service-chess-club.jpg');"></div>
+                    <div class="service-block-content">
+                        <div class="service-block-icon">♟️</div>
+                        <h3 class="service-block-title">Chess Club<br><span style="font-size: 1.25rem;">国际象棋俱乐部</span></h3>
+                        <p class="service-block-desc">ECF-affiliated club for all levels, tournaments and coaching</p>
+                        <div class="service-block-tags">
+                            <span class="service-tag">ECF Certified</span>
+                            <span class="service-tag">Tournament Training</span>
+                            <span class="service-tag">Youth Players</span>
+                        </div>
+                        <div class="text-end">
+                            <span class="btn btn-light btn-sm">了解详情 Learn More →</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Block 3: Badminton Club -->
+            <a href="/badminton/" class="text-decoration-none" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-block">
+                    <div class="service-block-bg" style="background-image: url('/static/images/services/service-badminton-club.jpg');"></div>
+                    <div class="service-block-content">
+                        <div class="service-block-icon">🏸</div>
+                        <h3 class="service-block-title">Badminton Club<br><span style="font-size: 1.25rem;">羽毛球俱乐部</span></h3>
+                        <p class="service-block-desc">Professional coaching for juniors and adults, competitive training</p>
+                        <div class="service-block-tags">
+                            <span class="service-tag">Professional Coaching</span>
+                            <span class="service-tag">Competitive Training</span>
+                        </div>
+                        <div class="text-end">
+                            <span class="btn btn-light btn-sm">了解详情 Learn More →</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Block 4: Government Programmes -->
+            <a href="/programmes/" class="text-decoration-none" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-block">
+                    <div class="service-badge">FREE 免费</div>
+                    <div class="service-block-bg" style="background-image: url('/static/images/services/service-government-programmes.jpg');"></div>
+                    <div class="service-block-content">
+                        <div class="service-block-icon">🏛️</div>
+                        <h3 class="service-block-title">Government Programmes<br><span style="font-size: 1.25rem;">政府项目</span></h3>
+                        <p class="service-block-desc">HAF programme funded by Trafford Council - Free for eligible children</p>
+                        <div class="service-block-tags">
+                            <span class="service-tag">Free Activities</span>
+                            <span class="service-tag">Healthy Food</span>
+                            <span class="service-tag">Community Service</span>
+                        </div>
+                        <div class="text-end">
+                            <span class="btn btn-light btn-sm">了解详情 Learn More →</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Latest News & Events -->
+<section class="section py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4" data-aos="fade-up">
+            <div>
+                <span class="badge bg-primary mb-2">Latest Updates / 最新动态</span>
+                <h2 class="display-6 fw-bold mb-2">News & Events</h2>
+                <p class="text-muted">Stay updated with our latest activities and announcements</p>
+            </div>
+            <a href="/news/" class="btn btn-outline-primary">查看全部 View All →</a>
+        </div>
+
+        <div class="news-grid">
+            {% for post in latest_posts %}
+            <article class="news-card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+                <div class="news-card-image" style="background-image: url('{{ post.featured_image }}');">
+                    <span class="news-card-category">{{ post.column.name }}</span>
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-date">
+                        {{ post.published_at.strftime('%Y年%m月%d日') if post.published_at else '' }} |
+                        {{ post.published_at.strftime('%B %d, %Y') if post.published_at else '' }}
+                    </div>
+                    <h3 class="news-card-title">{{ post.title }}</h3>
+                    <p class="news-card-excerpt">{{ post.summary or (post.content_html|striptags)[:100] + '...' }}</p>
+                    <a href="/news/{{ post.slug }}/" class="btn btn-sm btn-primary">阅读更多 Read More →</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Partner Logo Band -->
+<section class="section bg-light py-5">
+    <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+            <h2 class="h3 fw-bold mb-2">Our Partners / 合作伙伴</h2>
+            <p class="text-muted">Trusted by leading organizations and institutions</p>
+        </div>
+
+        <div class="partner-logos justify-content-center" data-aos="fade-up">
+            <div class="partner-logo">
+                <svg width="120" height="60" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="120" height="60" fill="#1e3a8a"/>
+                    <text x="60" y="35" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Trafford Council</text>
+                </svg>
+            </div>
+            <div class="partner-logo">
+                <svg width="120" height="60" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="120" height="60" fill="#dc2626"/>
+                    <text x="60" y="30" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Henan</text>
+                    <text x="60" y="42" font-family="Arial" font-size="10" fill="white" text-anchor="middle">University</text>
+                </svg>
+            </div>
+            <div class="partner-logo">
+                <svg width="120" height="60" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="120" height="60" fill="#422006"/>
+                    <text x="60" y="35" font-family="Arial" font-size="9" fill="white" text-anchor="middle">English Chess Federation</text>
+                </svg>
+            </div>
+            <div class="partner-logo">
+                <svg width="120" height="60" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="120" height="60" fill="#15803d"/>
+                    <text x="60" y="30" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Sale Sports</text>
+                    <text x="60" y="42" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Centre</text>
+                </svg>
+            </div>
+            <div class="partner-logo">
+                <svg width="120" height="60" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="120" height="60" fill="#7c2d12"/>
+                    <text x="60" y="30" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Badminton</text>
+                    <text x="60" y="42" font-family="Arial" font-size="10" fill="white" text-anchor="middle">England</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+            <h2 class="display-6 fw-bold mb-2">Our Achievements / 我们的成就</h2>
+            <p class="lead opacity-75">Building excellence in education since 2018</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="0">
+                <div class="stat-icon">📅</div>
+                <div class="stat-number">{{ site.established_year or '2018' }}</div>
+                <div class="stat-label">成立年份<br>Established</div>
+            </div>
+
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-icon">👨‍🎓</div>
+                <div class="stat-number">{{ site.student_count or '500+' }}</div>
+                <div class="stat-label">在读学生<br>Active Students</div>
+            </div>
+
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-number">{{ site.gcse_pass_rate or '100%' }}</div>
+                <div class="stat-label">GCSE通过率<br>Pass Rate</div>
+            </div>
+
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-icon">👨‍🏫</div>
+                <div class="stat-number">{{ site.teacher_count or '30+' }}</div>
+                <div class="stat-label">专业教师<br>Teachers</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact & Map Section -->
+<section class="section py-5">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="badge bg-primary mb-3">Get in Touch / 联系我们</span>
+            <h2 class="display-5 fw-bold mb-3">We're Here to Help</h2>
+            <p class="lead text-muted">Have questions? We'd love to hear from you</p>
+        </div>
+
+        <div class="contact-map-section">
+            <!-- Contact Form -->
+            <div data-aos="fade-right">
+                <form id="contactForm" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">姓名 Name *</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">邮箱 Email *</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">电话 Phone</label>
+                        <input type="tel" class="form-control" id="phone" name="phone">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="interest" class="form-label">感兴趣的项目 Interested In *</label>
+                        <select class="form-select" id="interest" name="interest" required>
+                            <option value="">Please select / 请选择</option>
+                            <option value="chinese-school">中文学校 Chinese School</option>
+                            <option value="chess-club">国际象棋俱乐部 Chess Club</option>
+                            <option value="badminton-club">羽毛球俱乐部 Badminton Club</option>
+                            <option value="haf-programme">政府项目 HAF Government Programmes</option>
+                            <option value="tutoring">学科辅导 Academic Tutoring</option>
+                            <option value="other">其他 Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="message" class="form-label">留言 Message *</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100">发送消息 Send Message</button>
+                </form>
+            </div>
+
+            <!-- Map & Info -->
+            <div data-aos="fade-left">
+                <div class="bg-light p-4 rounded mb-3">
+                    <h4 class="h5 fw-bold mb-3">Contact Information</h4>
+                    <p class="mb-2">
+                        <strong>📍 Address:</strong><br>
+                        {{ site.address or 'Manchester, UK' }}
+                    </p>
+                    <p class="mb-2">
+                        <strong>📞 Phone:</strong><br>
+                        <a href="tel:{{ site.phone }}">{{ site.phone or '0161 xxx xxxx' }}</a>
+                    </p>
+                    <p class="mb-2">
+                        <strong>📧 Email:</strong><br>
+                        <a href="mailto:{{ site.email }}">{{ site.email or 'info@boweneducation.org' }}</a>
+                    </p>
+                    <p class="mb-0">
+                        <strong>🕐 Opening Hours:</strong><br>
+                        Saturday: 9:00 - 17:00<br>
+                        Sunday: 9:00 - 17:00
+                    </p>
+                </div>
+
+                <!-- Placeholder for Google Map -->
+                <div class="bg-secondary rounded" style="height: 300px; display: flex; align-items: center; justify-content: center; color: white;">
+                    <div class="text-center">
+                        <div class="h2 mb-2">🗺️</div>
+                        <div>Google Maps Integration</div>
+                        <small class="d-block mt-2 opacity-75">Map will be embedded here</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- AOS (Animate On Scroll) -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+// Initialize AOS
+AOS.init({
+    duration: 800,
+    once: true,
+    offset: 100
+});
+
+// Initialize Swiper
+const swiper = new Swiper('.heroSwiper', {
+    loop: true,
+    autoplay: {
+        delay: 6000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    effect: 'fade',
+    fadeEffect: {
+        crossFade: true
+    },
+});
+
+// Contact Form Handling
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    if (!this.checkValidity()) {
+        e.stopPropagation();
+        this.classList.add('was-validated');
+        return;
+    }
+
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '发送中... Sending...';
+    submitBtn.disabled = true;
+
+    try {
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            alert('感谢您的留言！我们会尽快回复您。\nThank you for your message! We will get back to you soon.');
+            this.reset();
+            this.classList.remove('was-validated');
+        } else {
+            alert('提交失败，请稍后重试或直接致电我们。\nSubmission failed. Please try again later or contact us directly.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('提交失败，请稍后重试。\nSubmission failed. Please try again later.');
+    } finally {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,30 @@
+{
+  "output_dir": "static/images/news",
+  "images": [
+    {
+      "filename": "news-hero-background.jpg",
+      "prompt": "Modern educational institution news section, professional journalism theme, Manchester city skyline in background, warm and welcoming blue tones, professional photography, editorial style, clean and organized composition, 新闻中心背景图",
+      "priority": "high"
+    },
+    {
+      "filename": "henan-university-partnership.jpg",
+      "prompt": "Professional handshake between Chinese and British education representatives, Henan University campus buildings in background, warm and welcoming atmosphere, educational partnership theme, modern and professional photography style, cultural exchange concept, 中英教育合作签约仪式",
+      "priority": "high"
+    },
+    {
+      "filename": "2024-autumn-term-enrollment.jpg",
+      "prompt": "Happy diverse children aged 5-18 in Chinese language classroom, teacher teaching Chinese characters on whiteboard, modern bright classroom, educational posters with Chinese culture elements on walls, welcoming and engaging atmosphere, professional educational photography, 中文课堂教学场景",
+      "priority": "high"
+    },
+    {
+      "filename": "haf-programme-success-2024.jpg",
+      "prompt": "Diverse group of children aged 5-16 enjoying holiday activities, some doing Chinese calligraphy, others playing badminton, eating healthy meals together at tables, happy and engaged atmosphere, community program setting, colorful and inclusive, natural lighting, 儿童假期活动项目场景",
+      "priority": "high"
+    },
+    {
+      "filename": "chess-club-tournament-achievements.jpg",
+      "prompt": "Young chess players aged 8-16 sitting at chess boards in tournament, focused and strategic expressions, tournament hall with multiple chess tables, trophies and medals displayed, professional chess competition atmosphere, natural lighting, some players thinking deeply, 青少年国际象棋比赛场景",
+      "priority": "high"
+    }
+  ]
+}

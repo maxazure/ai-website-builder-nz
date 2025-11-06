@@ -1,0 +1,50 @@
+{
+  "output_dir": "static/images",
+  "images": [
+    {
+      "filename": "heroes/hero-main-brand.jpg",
+      "prompt": "A warm and professional Chinese language classroom in Manchester, UK. Young students aged 8-12 sitting at desks, learning Chinese characters with enthusiasm. A friendly Chinese teacher writing on a whiteboard. Bright, modern classroom with colorful educational posters showing Chinese calligraphy and culture. Natural lighting, educational atmosphere, diversity in students. Professional photography style, high quality, 16:9 aspect ratio.",
+      "priority": "high"
+    },
+    {
+      "filename": "heroes/hero-haf-programme.jpg",
+      "prompt": "Children aged 6-12 participating in fun holiday activities at a community center in Manchester. Diverse group of kids doing Chinese paper cutting craft, playing badminton, and enjoying healthy meals together. Bright, cheerful atmosphere with Trafford Council HAF programme banners visible. Happy, energetic children, supervised by friendly staff. Community engagement feeling. Professional photography style, vibrant colors, 16:9 aspect ratio.",
+      "priority": "high"
+    },
+    {
+      "filename": "heroes/hero-henan-university.jpg",
+      "prompt": "British-Chinese students on an educational tour in China, standing in front of Henan University's traditional Chinese architecture gate. Students aged 14-18 wearing casual travel clothes, taking group photos, holding British and Chinese flags. Beautiful ancient Chinese architecture background, cherry blossoms, spring scenery. Cultural exchange atmosphere, students smiling and excited. Professional photography style, golden hour lighting, 16:9 aspect ratio.",
+      "priority": "high"
+    },
+    {
+      "filename": "heroes/hero-event-featured.jpg",
+      "prompt": "A vibrant Chinese New Year celebration event in Manchester community center. Colorful red lanterns, Chinese decorations, children and families participating in lion dance performance. Traditional Chinese festive atmosphere, red and gold colors dominant. Community gathering, multicultural celebration. Professional event photography style, dynamic and festive, 16:9 aspect ratio.",
+      "priority": "high"
+    },
+    {
+      "filename": "intro-chinese-new-year.jpg",
+      "prompt": "Chinese New Year celebration at Bowen Education Group Manchester. Students and families in traditional Chinese clothing, red lanterns hanging, children performing Chinese traditional dance. Joyful atmosphere, cultural pride, community bonding. Red and gold decorations, dragon and lion dance costumes visible. Professional photography, vibrant colors, warm lighting, 3:2 aspect ratio.",
+      "priority": "high"
+    },
+    {
+      "filename": "services/service-chinese-school.jpg",
+      "prompt": "Modern Chinese language classroom in Manchester. Students aged 10-16 sitting at desks with textbooks and tablets, learning Chinese characters. Professional Chinese teacher at whiteboard with pinyin and characters. Educational posters with Chinese culture elements. Bright, clean, organized classroom. Natural window light, professional educational photography, warm atmosphere, 4:3 aspect ratio.",
+      "priority": "medium"
+    },
+    {
+      "filename": "services/service-chess-club.jpg",
+      "prompt": "Children playing chess at Bowen Chess Club Manchester. Young chess players aged 8-14 concentrated on chess boards, ECF (English Chess Federation) banners visible. Professional chess coaching session in community center. Focused, competitive yet friendly atmosphere. Chess clocks, notation sheets, trophy cabinet in background. Professional sports photography, natural lighting, 4:3 aspect ratio.",
+      "priority": "medium"
+    },
+    {
+      "filename": "services/service-badminton-club.jpg",
+      "prompt": "Junior badminton training at Sale Sports Centre Manchester. Young players aged 10-16 practicing badminton with professional coaches. Modern indoor sports hall with proper badminton courts, nets, and equipment. Active, energetic atmosphere. Coach demonstrating technique, students in training. Professional sports photography, dynamic action, bright indoor lighting, 4:3 aspect ratio.",
+      "priority": "medium"
+    },
+    {
+      "filename": "services/service-government-programmes.jpg",
+      "prompt": "HAF (Holiday Activities and Food) programme at Bowen Education Group. Diverse children aged 6-12 enjoying holiday activities - arts, crafts, sports, and healthy meals. Trafford Council partnership programme. Happy children, caring staff, community center setting. Inclusive, supportive environment. Educational and fun activities visible. Professional community photography, bright and welcoming, 4:3 aspect ratio.",
+      "priority": "medium"
+    }
+  ]
+}

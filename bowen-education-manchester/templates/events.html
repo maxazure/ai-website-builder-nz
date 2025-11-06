@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}博文活动 - Bowen Education Group{% endblock %}
+
+{% block meta_description %}博文集团定期举办各类文化活动，包括中国新年庆典、文化进校园、寻根之旅等{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero hero--page">
+    <div class="hero__overlay"></div>
+    <div class="hero__background" style="background-image: url('/static/images/hero-default.jpg');"></div>
+    <div class="container">
+        <div class="hero__content">
+            <h1 class="hero__title" data-aos="fade-up">
+                <span class="hero__title-chinese">博文活动</span>
+            </h1>
+            <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="100">
+                Events
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Content Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="content-box" data-aos="fade-up">
+                    <h2>我们的活动</h2>
+                    <p>博文集团定期举办各类文化活动，旨在推广中华文化，增进东西方文化交流。</p>
+
+                    <h3 class="mt-4">主要活动</h3>
+                    <ul>
+                        <li><strong>中国新年庆典</strong> - 传统新年庆祝活动</li>
+                        <li><strong>中国文化进校园</strong> - 在当地学校推广中华文化</li>
+                        <li><strong>寻根之旅</strong> - 组织学生回中国体验文化</li>
+                        <li><strong>河南大学合作项目</strong> - 与河南大学的文化交流活动</li>
+                        <li><strong>Easter访华计划</strong> - 复活节期间的中国文化交流</li>
+                    </ul>
+
+                    <p class="mt-4">详细内容正在完善中，敬请期待。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section section--cta-dark">
+    <div class="container">
+        <div class="cta-box cta-box--centered" data-aos="fade-up">
+            <h2 class="cta-box__title">想参与活动？</h2>
+            <p class="cta-box__description">联系我们了解最新活动信息</p>
+            <a href="/contact" class="btn btn--primary btn--large">联系我们</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

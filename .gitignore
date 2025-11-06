@@ -36,3 +36,4 @@ Thumbs.db
 
 # Generated sites (if you want to exclude them)
 # *.nz/
+.env

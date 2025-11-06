@@ -222,7 +222,13 @@ def _copy_module_files(
         source_dir = scaffold_dir / "app" / file_type
         target_dir = project_path / "app" / file_type
 
-        for file_name in file_list:
+        for file_item in file_list:
+            # 处理字典格式（如 schemas 中带 exports 的配置）
+            if isinstance(file_item, dict):
+                file_name = file_item.get("key")
+            else:
+                file_name = file_item
+
             source_file = source_dir / file_name
             target_file = target_dir / file_name
 

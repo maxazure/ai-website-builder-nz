@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}羽毛球俱乐部 - Bowen Education Group{% endblock %}
+
+{% block meta_description %}博文羽毛球俱乐部提供专业的羽毛球训练和比赛机会{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero hero--page">
+    <div class="hero__overlay"></div>
+    <div class="hero__background" style="background-image: url('/static/images/hero-default.jpg');"></div>
+    <div class="container">
+        <div class="hero__content">
+            <h1 class="hero__title" data-aos="fade-up">
+                <span class="hero__title-chinese">羽毛球俱乐部</span>
+            </h1>
+            <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="100">
+                Badminton Club
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Content Section -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="content-box" data-aos="fade-up">
+                    <h2>俱乐部简介</h2>
+                    <p>博文羽毛球俱乐部为学生提供专业的羽毛球训练和比赛机会。我们拥有经验丰富的教练团队和完善的训练设施。</p>
+
+                    <h3 class="mt-4">我们的服务</h3>
+                    <ul>
+                        <li>专业羽毛球技能培训</li>
+                        <li>定期训练课程</li>
+                        <li>组织友谊赛和比赛</li>
+                        <li>为学生提供比赛机会</li>
+                    </ul>
+
+                    <p class="mt-4">详细内容正在完善中，敬请期待。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section section--cta-dark">
+    <div class="container">
+        <div class="cta-box cta-box--centered" data-aos="fade-up">
+            <h2 class="cta-box__title">想了解更多？</h2>
+            <p class="cta-box__description">联系我们获取详细信息</p>
+            <a href="/contact" class="btn btn--primary btn--large">联系我们</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

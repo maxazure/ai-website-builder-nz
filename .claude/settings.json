@@ -36,5 +36,104 @@
         ]
       }
     ]
+  },
+  "agents": {
+    "architect": {
+      "description": "产品规划专家 - 分析行业特点，设计信息架构，规划内容与资产清单",
+      "model": "sonnet",
+      "tools": ["Read", "Grep", "Glob", "WebSearch", "WebFetch", "Write"],
+      "timeout": 300,
+      "retry": {
+        "max_retries": 2,
+        "backoff": "exponential"
+      }
+    },
+    "content_manager": {
+      "description": "内容生成专家 - 基于内容计划生成实际的网站内容数据",
+      "model": "sonnet",
+      "tools": ["Read", "Write", "WebSearch", "WebFetch", "Grep", "Glob"],
+      "timeout": 240,
+      "retry": {
+        "max_retries": 2,
+        "on_max_retry": "rollback_to_planning"
+      }
+    },
+    "schema_designer": {
+      "description": "数据库模型设计师 - 将IA设计转换为数据库schema和seed data规格",
+      "model": "sonnet",
+      "tools": ["Read", "Write", "Grep", "Glob"],
+      "timeout": 180,
+      "retry": {
+        "max_retries": 2,
+        "on_max_retry": "rollback_to_content_generation"
+      }
+    },
+    "design_system": {
+      "description": "设计系统专家 - 基于内容和行业特点设计网站视觉系统",
+      "model": "sonnet",
+      "tools": ["Read", "Write", "WebSearch", "WebFetch", "Grep", "Glob"],
+      "timeout": 200,
+      "retry": {
+        "max_retries": 2,
+        "on_max_retry": "rollback_to_schema_design"
+      }
+    },
+    "asset_maker": {
+      "description": "静态资源生成器 - 使用Zhipu AI CogView-3批量生成网站图片",
+      "model": "sonnet",
+      "tools": ["Read", "Write", "Bash", "WebFetch"],
+      "timeout": 600,
+      "retry": {
+        "max_retries": 3,
+        "non_blocking": true
+      },
+      "api_keys": ["ZHIPU_KEY"]
+    },
+    "coder": {
+      "description": "代码生成与开发专家 - 生成模块化项目代码、SQL和模板",
+      "model": "sonnet",
+      "tools": ["Read", "Write", "Edit", "Bash", "Grep", "Glob"],
+      "timeout": 300,
+      "retry": {
+        "max_retries": 2,
+        "on_max_retry": "rollback_to_schema"
+      }
+    },
+    "tester": {
+      "description": "测试与验证专家 - 使用Chrome DevTools MCP进行全面功能测试",
+      "model": "sonnet",
+      "tools": ["Bash", "Read", "Grep", "Glob"],
+      "timeout": 300,
+      "mcp_servers": ["chrome-devtools"],
+      "on_error": "enter_debug_loop"
+    },
+    "seo_polisher": {
+      "description": "SEO内容润色专家 - 优化meta tags、生成sitemap、改进无障碍性",
+      "model": "sonnet",
+      "tools": ["Read", "Write", "Edit", "Grep", "Glob"],
+      "timeout": 180,
+      "retry": {
+        "max_retries": 1,
+        "non_blocking": true
+      }
+    }
+  },
+  "orchestrator": {
+    "workspace_dir": "/workspace",
+    "scaffold_path": "./docms-scaffold",
+    "enable_rollback": true,
+    "enable_retry": true,
+    "fsm_states": ["INIT", "PLANNING", "CONTENT_GENERATION", "SCHEMA_DESIGN", "DESIGN_SYSTEM", "ASSET_GENERATION", "CODE_GENERATION", "TESTING", "DEBUG_LOOP", "SEO_OPTIMIZATION", "COMPLETED", "ABORT"],
+    "debug_loop_max_iterations": 3
+  },
+  "shared_facilities": {
+    "knowledge_base": "tools/新西兰中小企业网站模板研究报告.md",
+    "modules_config": "docms-scaffold/modules_config.yaml",
+    "artifacts_dir": "/workspace"
+  },
+  "metadata": {
+    "version": "2.0",
+    "architecture": "FSM-based Orchestrator + 8 Specialized Agents",
+    "last_updated": "2025-11-04"
   }
 }
